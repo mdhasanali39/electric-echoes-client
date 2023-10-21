@@ -3,7 +3,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="footer md:grid-cols-2 items-start grid-flow-row lg:grid-flow-col p-10 text-base-content">
+    <footer className="footer grid-flow-row md:grid-cols-2 items-start lg:grid-flow-col p-4 lg:p-10 text-base-content overflow-hidden">
       <aside className="-mt-2">
         <img
           className="w-[260px]"
@@ -43,7 +43,7 @@ const Footer = () => {
         <a className="link link-hover">Check out</a>
         <a className="link link-hover">History</a>
       </nav>
-      <nav>
+      <nav className="lg:-ml-[150px]">
         <header className="footer-title">Legal</header>
         <a className="link link-hover">Terms of use</a>
         <a className="link link-hover">Privacy policy</a>
@@ -53,7 +53,7 @@ const Footer = () => {
         <header className="footer-title">Newsletter</header>
         <fieldset className="form-control w-80">
           <label className="label">
-            <span className="label-text font-medium">
+            <span className="label-text w-3/4 font-medium">
               Join our new later! Just provide your email and click the
               subscribe button
             </span>

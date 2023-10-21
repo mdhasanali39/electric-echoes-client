@@ -57,7 +57,9 @@ const ProductDetailsCard = ({ product }) => {
       <div className="flex flex-col gap-6 lg:flex-row px-4">
         {/* image  */}
         <div className="flex-1 flex justify-center items-center">
-          <img src={image_url} alt={product_name} />
+          <img 
+          className="rounded-lg"
+          src={image_url} alt={product_name} />
         </div>
         {/* details  */}
         <div className="flex-1 py-6">

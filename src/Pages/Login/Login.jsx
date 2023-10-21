@@ -48,8 +48,8 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <div className="w-2/4 mx-auto border px-6 py-14  shadow-xl rounded-lg">
+    <div className="sm:px-4">
+      <div className="lg:w-2/4 mx-auto border my-12 px-6 py-14  shadow-xl rounded-lg">
         <h2 className="text-3xl font-bold text-center border-b-8 border-yellow-500 w-3/5 mx-auto rounded-lg pb-2 mb-10">
           Login Now
         </h2>

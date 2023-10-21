@@ -45,7 +45,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="min-h-[90vh] mt-8 mb-10 px-5">
+    <div className="min-h-[90vh] mt-8 mb-10 px-2 md:px-5">
       <form onSubmit={handleAddProduct} className="flex flex-col">
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="border flex-1 p-2 space-y-3">

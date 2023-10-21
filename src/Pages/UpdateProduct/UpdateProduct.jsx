@@ -64,7 +64,7 @@ const UpdateProduct = () => {
 
 
   return (
-    <div className="min-h-[78vh] mt-8 mb-10">
+    <div className="min-h-[78vh] px-2 md:px-5 mt-8 mb-10">
       <form onSubmit={handleUpdateProduct} className="flex flex-col">
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="border flex-1 p-2 space-y-3">
