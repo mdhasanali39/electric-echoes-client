@@ -5,7 +5,7 @@ const Brands = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/brands")
+    fetch("https://electric-echoes-server.vercel.app/electricechoes/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
@@ -13,35 +13,17 @@ const Brands = () => {
       });
   }, []);
 
-  // const submitBrand = (e) =>{
-  //     e.preventDefault()
-  //     const form = e.target;
-  //     const name = form.name.value;
-  //     const photoUrl = form.photo.value
-  //     const brand = {
-  //         name, photoUrl
-  //     }
-  //     console.log(brand);
-
-  //     fetch('http://localhost:5000/brand',{
-  //         method: 'POST',
-  //         headers: {
-  //             'content-type': 'application/json'
-  //         },
-  //         body: JSON.stringify(brand)
-  //     })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //         console.log(data);
-  //     })
-  // }
-
   return (
-    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="">
+      <div className="my-8">
+        <h2 className="text-center text-3xl font-semibold">Our Brands</h2>
+      </div>
       {/* brands  */}
-      {brands?.map((brand) => (
-        <BrandsCard key={brand._id} brand={brand}></BrandsCard>
-      ))}
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {brands?.map((brand) => (
+          <BrandsCard key={brand._id} brand={brand}></BrandsCard>
+        ))}
+      </div>
     </div>
   );
 };
