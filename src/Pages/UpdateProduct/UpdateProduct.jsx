@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -20,12 +21,26 @@ const UpdateProduct = () => {
     e.preventDefault();
     const form = e.target;
     const product_name = form.product_name.value;
-    const brand_name = form.brand_name.value;
+    const brand_name = (form.brand_name.value).toLowerCase();
     const product_price = form.product_price.value;
     const short_description = form.short_description.value;
     const image_url = form.image_url.value;
     const product_type = form.product_type.value;
     const product_rating = form.product_rating.value;
+
+
+    // check price number or not 
+    if(isNaN(product_price)){
+      return toast.error('Product price should be number')
+    }
+
+    if(isNaN(product_rating)){
+      return toast.error('Rating value should be number')
+    }
+    if(parseFloat(product_rating) < 0 || parseFloat(product_rating) > 5){
+      return toast.error('Product rating should not less than 0 and not greater than 5')
+    }
+
 
     const productUpdated = {
       product_name,

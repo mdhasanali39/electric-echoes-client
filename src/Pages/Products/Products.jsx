@@ -1,11 +1,15 @@
 import { Link, useLoaderData } from "react-router-dom";
 import ProductsCard from "./ProductsCard";
 import ProductsSlider from "./ProductsSlider";
+import { useEffect } from "react";
 
 const Products = () => {
   const products = useLoaderData();
 
-  console.log(products);
+  useEffect(()=>{
+    window.scroll(0,0)
+  },[])
+
   return (
     <div className="mb-20">
       {/* products slider  */}

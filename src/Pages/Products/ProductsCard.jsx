@@ -31,7 +31,7 @@ const ProductsCard = ({ product }) => {
         <p className="font-semibold">Price: $<span>{product_price}</span></p>
         {/* rating  */}
         <div>
-          <Rating value={Math.round(product_rating)} />
+          <Rating value={Math.round(parseFloat(product_rating))}/>
         </div>
         <div className="card-actions justify-end">
           <Link to={`/update_products/${_id}`}>

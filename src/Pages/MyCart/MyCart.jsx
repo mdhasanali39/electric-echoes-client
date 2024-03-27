@@ -21,7 +21,7 @@ const MyCart = () => {
           'Deleted successfully',
           'success'
         )
-        const remainingProducts = cartProducts.filter(product => product._id !== _id)
+        const remainingProducts = displayedProducts.filter(product => product._id !== _id)
         setDisPlayedProducts(remainingProducts)
       }
       console.log(data);
@@ -38,12 +38,17 @@ const MyCart = () => {
     }
   },[displayedProducts])
 
+  console.log(displayedProducts,);
+
   return (
     <div className="lg:flex gap-6 my-10">
       <div className="flex-grow">
         {
           displayedProducts?.map((product) => (
-          <Cart key={product._id} product={product} handleDelete={handleDelete}></Cart>
+          <Cart key={product._id} 
+          product={product} 
+          handleDelete={handleDelete}
+          ></Cart>
         ))}
         {
           displayedProducts.length === 0 &&

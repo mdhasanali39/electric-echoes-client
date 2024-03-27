@@ -2,17 +2,21 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const Cart = ({ product, handleDelete}) => {
-  
+const Cart = ({ product, handleDelete }) => {
   const [productQuantity, setProductQuantity] = useState(product.quantity);
-  const [totalPrice, setTotalPrice] = useState([
-    product.product_price * productQuantity,
-  ]);
+  // const [totalPrice, setTotalPrice] = useState(product.product_price);
+  // console.log(totalPrice);
 
-  // console.log(test);
-
-  const { _id, product_name, brand_name, product_price, image_url } =
+  const { _id,
+    quantity,
+     product_name,
+      brand_name,
+       product_price,
+        image_url
+       } =
     product || {};
+
+    console.log(quantity);
 
   const handleDecrement = async () => {
     if (productQuantity !== 1) {
@@ -25,7 +29,8 @@ const Cart = ({ product, handleDelete}) => {
             headers: {
               "content-type": "application/json",
             },
-            body: JSON.stringify({ quantity: productQuantity - 1 }),
+            body: JSON.stringify({ quantity: productQuantity - 1,
+              total_price: parseFloat(product_price) * quantity}),
           }
         );
         const data = await res.json();
@@ -48,7 +53,7 @@ const Cart = ({ product, handleDelete}) => {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify({ quantity: productQuantity + 1 }),
+          body: JSON.stringify({ quantity: productQuantity + 1, total_price: (parseFloat(product_price) * quantity )+ parseFloat(product_price)}),
         }
       );
       const data = await res.json();
@@ -57,9 +62,6 @@ const Cart = ({ product, handleDelete}) => {
       console.log(error);
     }
   };
-
-  
-
 
   return (
     <div>
@@ -81,9 +83,12 @@ const Cart = ({ product, handleDelete}) => {
             <p className="font-semibold">
               Price: $<span>{product_price}</span>
             </p>
-            <button 
-            onClick={()=>handleDelete(_id)}
-            className="text-red-600 font-semibold">Remove</button>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="text-red-600 font-semibold"
+            >
+              Remove
+            </button>
           </div>
         </div>
         {/* quantity and total here */}

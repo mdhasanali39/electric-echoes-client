@@ -29,6 +29,7 @@ const ProductDetailsCard = ({ product }) => {
       product_price,
       image_url,
       quantity: 1,
+      total_price: product_price,
     };
     try {
       const res = await fetch(`https://electric-echoes-server.vercel.app/electricechoes/carts`, {

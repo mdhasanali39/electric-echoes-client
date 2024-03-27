@@ -4,20 +4,26 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { FaSignOutAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
+import useTheme from "../../Hooks/useTheme";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [active, setActive] = useState(false);
   const [menuClick, setMenuClick] = useState(false);
-
   const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : 'light')
-
+  const all = useTheme()
+  
+  
+  
   useEffect(()=>{
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme")
+    // set localTheme to setTheme (from ThemeManager) function
+    all?.setTheme(localTheme)
     document.querySelector('html').setAttribute('data-theme', localTheme)
-  },[theme])
+  },[setTheme, theme,all])
 
+  // this is a theme toggling func
   const handleToggleTheme = (e) =>{
     if(e.target.checked){
       setTheme('dark')
@@ -26,7 +32,6 @@ const Navbar = () => {
     }
 
   }
-
 
   const handleLogOut = () => {
     logOut()
@@ -90,7 +95,7 @@ const Navbar = () => {
           <li>
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
-              <input type="checkbox" onClick={handleToggleTheme} 
+              <input type="checkbox" onChange={handleToggleTheme} 
                 checked={theme === 'light' ? false : true}
               />
 
